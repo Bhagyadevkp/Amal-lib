@@ -1,0 +1,55 @@
+{% block js %}
+<script language="javascript">
+    $('#id_department_select').change(function() {populateCar(this)});
+    // $('#id_subject').addClass('subjects');
+
+    department={{ form.departments | safe }}
+    subject={{ form.subjects | safe }}
+    subjectid={{ form.subjid | safe }}
+    departmentid={{ form.departmentsid | safe }};
+    populateBrand();
+    $("#id_subject_select").empty();
+    $("#id_subject_select").append('<option value="" disabled selected>First select a department</option>');
+
+
+    // department=["COMPUTER SCIENCE", "ENGLISH"]
+    // subject={"COMPUTER SCIENCE": ["PYTHON", "C PROGRAMMING"], "ENGLISH": ["WAYS WITH WORDS"]}
+    // subjectid={"COMPUTER SCIENCE": [1, 2], "ENGLISH": [3]}
+    // departmentid=['1', '2'];
+
+
+    function populateBrand() {
+        $('#id_department_select').empty();
+        $("#id_department_select").append('<option value="" disabled selected>Select your option</option>');
+        $.each(department, function(v) {
+            $('#id_department_select')
+                .append($("<option></option>")
+                .attr("value", departmentid[v])
+                .text(department[v]));
+        });
+    }
+
+    function populateCar(event) {
+        departments = $("#id_department_select option:selected").text();
+        $("#id_subject_select").empty();
+        $("#id_subject_select").append('<option value="" disabled selected>Select your option</option>');
+        for (let [b, bsubjects] of Object.entries(subjectid)) {
+            if (b == departments) {
+                //alert(b);
+
+                for (s in bsubjects) {
+                    console.log(s)
+                    console.log(s[b])
+                    console.log(bsubjects[s])
+                    
+                    $('#id_subject_select')
+                        .append($("<option></option>")
+                            .attr("value", bsubjects[s])
+                            .text(subject[b][s]));
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}
+

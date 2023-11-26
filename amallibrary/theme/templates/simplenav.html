@@ -1,0 +1,43 @@
+
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Django Tailwind</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+
+
+	<body>
+
+
+ <header class="bg-white shadow-xl md:sticky justify-center top-0 z-10 ">
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row justify-center items-center">
+        <a class="title-font font-bold flex justify-center  text-gray-900 mb-4 md:mb-0">
+          <a href="#Home" class="text-xl">
+            Amal Library
+          </a>
+        </a>
+        <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700    flex flex-wrap items-center text-base justify-center">
+          <a href="#Home" class="mr-5 hover:text-green-600">
+            Home
+          </a>
+          <a href="#QuestionBank" class="mr-5 hover:text-green-600">
+            Question Bank
+          </a>
+          <a href="#Books" class="mr-5 hover:text-green-600">
+            Books
+          </a>
+        </nav>
+        </div>
+    </header>
+
+    {% block body %}
+
+		{% endblock %}
+		
+	</body>
+</html>

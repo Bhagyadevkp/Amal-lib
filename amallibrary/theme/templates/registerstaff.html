@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<form action="Staffregister" method="post" >
+
+    {% csrf_token %}
+<div class=" flex justify-center">
+
+    <div class="grid md:grid-cols-2  md:grid-rows-6 gap-4 mt-14 mx-5 lg:mx-14 lg:gap-8 pt-7 px-16 ">
+    <div class="pt-5">
+        
+        <input type="text" name="staff_name" required placeholder="Name" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+    <div class="pt-5">
+        
+        <input type="text" name="staff_username" required placeholder="Username" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+    <div class="pt-5">
+        
+        <select  name="staff_gender"  required placeholder="Gender" class=" w-full border-2  rounded-full text-center ">  
+            <option value="">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+
+    <div class="mt-5">
+        
+        <input type="date" name="staff_dob" placeholder="Date of Birth" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+    <div class="mt-5">
+        
+        <input type="email" name="staff_email" required placeholder="Email" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+    <div class="pt-5">
+        
+        <input type="text" name="staff_address" required placeholder="Address" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+    <div class="pt-5">
+        
+        <input type="password" name="staff_password" required placeholder="Password" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+    <div class="pt-5">
+        
+        <input type="password" name="staff_password1" required placeholder="Confirm Password" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+
+    <div class="pt-5">
+        
+        <input type="text" name="staff_post" required placeholder="Post" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+    <div class="pt-5">
+        
+        <input type="text" name="staff_department" required placeholder="Department Name" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+    <div class="pt-5">
+        
+        <input type="number" name="staff_yearofjoin" required placeholder="Year of join " class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+    <!-- <div class="pt-5">
+        
+        <input type="number" name="staff_admissionnumber" required placeholder="Year of Admisiion " class=" w-full outline-none border-2 rounded-full text-center">
+    </div> -->
+
+    <div class="pt-5">
+        
+        <input type="number" name="staff_phone" required placeholder="Phone Number" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+</div>
+    
+</div>
+<div class="pt-5 flex justify-center ">
+    <button type="submit" onsubmit="alert('Student Registration Complete')" class="items-center bg-gray-800 border-0 py-3 px-10 focus:outline-none hover:bg-green-600 rounded text-base text-white mt-4 md:mt-0">Register</button>
+</div>
+    
+</form>
+
+{% endblock %}

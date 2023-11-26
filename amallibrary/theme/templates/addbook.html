@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+<form action="Addbook" method="post" enctype="multipart/form-data">
+    
+{% csrf_token %}
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="name" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author" name="author" placeholder="Enter author">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="description">Category</label>
+        <input type="text" class="form-control" id="description" name="category" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="description">pub_date</label>
+        <input type="date" class="form-control" id="description" name="pub_date" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="description">booknumber</label>
+        <input type="number" class="form-control" id="description" name="booknumber" rows="3"></textarea>
+    </div>
+
+    
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" class="form-control-file" id="image" name="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+{% endblock %}

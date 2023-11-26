@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+
+{% block body %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+
+
+
+ <div class="bg-white font-Roboto, sans-serif justify-center px-10 py-10 md:px-32 lg:px-60">
+             <center>
+             <h1 class='font-bold text-4xl'>QuestionBank</h1>
+             <h4 class='font-semibold text-lg mt-9 mb-4'>Departments</h4>
+             
+
+                {{ form.department_select }}
+       
+
+            <h4 class='font-semibold text-lg mt-5 mb-4 '>Subject</h4>
+
+            {{ form.subject_select }}
+
+    
+        <div class='pt-5'>
+        <button class="font-semibold border-2 rounded-lg text-purple-500 border-purple-500 px-3 md:px-10 py-0.5 hover:text-green-600 hover:border-green-600">Submit</button>
+        </div>     
+
+        </center>  
+
+        </div>
+
+
+
+
+
+
+<div class='bg-white'>
+            <div class='font-Roboto, sans-serif justify-center text-center '>
+            <h2 class='font-bold text-4xl'>Questions</h2>
+            </div>
+       <div class='grid md:grid-cols-2  md:grid-rows-6 gap-4 mt-7 mx-7 md:mx-20'>
+           <div class='menu bg-white  h-72 rounded-xl' style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">fdbbdfbbdfb<br>hbsdjhhvvhjs<br>gvdgfsgjdfjgcs<br>bhgvsjvjvj<br>dbjhugfeduyfuywa</div>
+           <div class='menu bg-white  h-72 rounded-xl' style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"></div>
+           <div class='menu bg-white  h-72 rounded-xl' style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"></div>
+           <div class='menu bg-white  h-72 rounded-xl' style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"></div>
+           <div class='menu bg-white  h-72 rounded-xl' style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"></div>
+           <div class='menu bg-white  h-72 rounded-xl' style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"></div>
+           <div class='menu bg-white  h-72 rounded-xl' style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"></div>
+           <div class='menu bg-white  h-72 rounded-xl' style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"></div>
+       </div>
+            
+
+</div>
+
+{% block js %}
+
+{% include "js.html" %}
+{% endblock %}
+
+{% endblock %}
+
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Amal College</title>
+    </head>
+    <body>
+
+<form action="Bookusrregister" method="post">
+    {% csrf_token %}
+    <div>
+        <label >Name</label>
+        <input type="text" name="name" required placeholder="Name">
+    </div>
+
+
+
+
+    <div>
+        <label >Username</label>
+        <input type="text" name="username" required placeholder="Username">
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" required placeholder="email">
+    </div>
+    <div >
+        <label >Password</label>
+        <input type="password" name="password" required placeholder="**********">
+    </div>
+    <div >
+        <label >Confirm Password</label>
+        <input type="password" name="password1" required placeholder="**********">
+    </div>
+
+
+
+    <div>
+        <label >Semester</label>
+        <input type="text" name="Semester" required placeholder="Semester">
+    </div>
+    <div>
+        <label >Department</label>
+        <input type="text" name="Department" required placeholder="Department name">
+    </div>
+    <div>
+        <label >Admisiion year</label>
+        <input type="number" name="Admisiion year" required placeholder="year of Admisiion ">
+    </div>
+    <div>
+        <label for="phone">Phone number</label>
+        <input type="number" name="phone" required placeholder="Phone number">
+    </div>
+    <div>
+        <button onClick="">Signup</button>
+    </div>
+
+    </div>
+</form>
+
+</body>
+</html>

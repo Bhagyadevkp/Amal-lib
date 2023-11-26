@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block body %} {% block style %}
+<script>
+  window.CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/";
+</script>
+{% endblock %}
+
+<div class="blog">
+  <div class="flex justify-center pt-14">
+    <h1 class="font-extrabold text-4xl">Blog</h1>
+  </div>
+  <div class="flex justify-center pt-7">
+    <h3 class="font-semibold text-center px-7 text-lg">
+      All the latest amallibrary news, straight from the team.
+    </h3>
+  </div>
+</div>
+
+<div class="grid md:grid-cols-4 rounded-md gap-3 mt-14 mx-5 lg:mx-52 lg:gap-6 shadow-lg bg-gray-100 pt-5"
+  style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070">
+  {% for i in post %}
+  <div class="menu bg-gray-100 h-auto md:h-auto rounded-full md:rounded-xl text-right pt-5">
+    <h1>{{i.pub_date}}</h1>
+  </div>
+
+  <div class="menu bg-gray-100 col-span-3 h-auto md:h-auto rounded-full md:rounded-xl text-left pb-3 pt-5">
+    <h1 class="text-lg font-semibold">{{i.title}}</h1>
+    <p class="pb-2">{{i.body|slice:":400"| safe}}....</p>
+
+    <a href="{% url 'Blogview' i.id %}"><button
+        class="block border-none text-blue-800 text-sm font-semibold rounded-full bg-gray-100 hover:bg-white focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs px-3 py-2"
+        style="
+          box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;
+        ">
+        Read more..
+      </button></a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

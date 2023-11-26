@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+
+
+
+
+
+
+
+{% if type == 'NoUser' %}
+
+<div class="flex justify-center text-purple-700 text-center text-5xl font-extrabold w-screen mt-72 lg:mt-96" >
+    No such User Found
+</div>
+
+{% elif  type == 'Loginerror' %}
+
+ <div class="flex justify-center text-purple-700 text-center text-5xl font-extrabold w-screen mt-72 lg:mt-96" >
+    You Are Not Logged In, Please Login First
+</div>
+{% elif  type == 'Adminerror' %}
+
+ <div class="flex justify-center text-purple-700 text-center text-5xl font-extrabold w-screen mt-72 lg:mt-96" >
+    This Feature is Only for Admin
+</div>
+
+{% else %}
+
+  <div class="flex justify-center text-purple-700 text-center text-5xl font-extrabold w-screen mt-72 lg:mt-96" >
+    Sorry Something Went Wrong, Please Try Again
+</div>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

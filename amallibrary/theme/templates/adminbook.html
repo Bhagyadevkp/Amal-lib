@@ -1,0 +1,334 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block body %}
+
+
+
+
+
+
+
+<script>
+   // make a function popuphandler to handle the popup
+   function Addbooks (){
+      console.log("popuphandler");
+      var model = document.getElementById("Addbook");
+      if (model.style.display == "none") {
+         model.style.display = "block";
+      } else {
+         model.style.display = "none";
+      }
+   
+   }
+   function Takebook (){
+      console.log("popuphandler");
+      var model = document.getElementById("Getbook");
+      if (model.style.display == "none") {
+         model.style.display = "block";
+      } else {
+         model.style.display = "none";
+      }
+   
+   }
+
+   </script>
+
+
+
+
+
+<div class="grid lg:grid-cols-2 overflow-y-auto ">
+
+
+<div class="sm:px-6 w-full  justify-center">
+      <div class="px-4 md:px-10 py-4 md:py-7">
+         <div class="flex items-center justify-between">
+            <p tabindex="0"
+               class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">
+               Books</p>
+         </div>
+      </div>
+      <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+         <div class="sm:flex items-center justify-between">
+            <div class="flex items-center">
+               <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800">
+                  <div class="py-2 px-8 text-gray-600 hover:text-indigo-700 bg-indigo-100 rounded-full">
+                     <p>All</p>
+                  </div>
+               </a>
+            </div>
+            <button onclick="Addbooks()"
+               class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+               <p class="text-sm font-medium leading-none text-white">Add Book</p>
+            </button>
+         </div>
+         <div class="mt-7 overflow-x-auto">
+            <table class="w-full whitespace-nowrap">
+               <tbody>
+                  {% for i in book %}
+                  <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+
+                     <th class="">
+                        <div class="flex items-center pl-5">
+                           <p class="text-base font-medium leading-none text-gray-700 mr-2">{{i.name}}</p>
+
+                        </div>
+                     </th>
+
+                     <td class="pl-5">
+                        <div class="flex items-center">
+
+                           <p class="text-sm leading-none text-gray-600 ml-2">{{i.booknumber}}</p>
+                        </div>
+                     </td>
+                     <td class="pl-5">
+                        {% if i.id in var %}
+                        <div class="flex items-center">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                              stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                           </svg>
+                           <p class="text-sm leading-none text-red-500 ml-2 hidden md:block lg:block">Not Available</p>
+                        </div>
+
+                        {% else %}
+                        <div class="flex items-center ">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                              stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                           </svg>
+                           <p class="text-sm leading-none text-green-500 ml-2 hidden md:block lg:block">Available</p>
+                        </div>
+                        {% endif %}
+                     </td>
+                     <td class="pl-4">
+                        <a href="{% url 'Editbook' i.id %}">
+                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-red-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Edit</button>
+                        </a>
+                        </td>
+                     <td class="pl-4">
+                        <a href="{% url 'Deletebook' i.id %}">
+                        <button
+                           class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Delete</button></a>
+                     </td>
+
+                  </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+         </div>
+      </div>
+</div>
+
+
+      <div class="sm:px-6 w-full  justify-center">
+         <div class="px-4 md:px-10 py-4 md:py-7">
+            <div class="flex items-center justify-between">
+               <p tabindex="0"
+                  class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">
+                  Taken Books</p>
+            </div>
+         </div>
+         <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+            <div class="sm:flex items-center justify-between">
+               <div class="flex items-center">
+                  <a class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8"
+                     href="javascript:void(0)">
+                     <div class="py-2 px-8 text-gray-600 hover:text-indigo-700 bg-indigo-100 rounded-full ">
+                        <p>Taken</p>
+                     </div>
+                  </a>
+
+               </div>
+               <button onclick="Takebook()"
+                  class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                  <p class="text-sm font-medium leading-none text-white">Take Book</p>
+               </button>
+            </div>
+            <div class="mt-7 overflow-x-auto">
+               <table class="w-full whitespace-nowrap">
+                  <tbody>
+                     {% for i in takenbook %}
+                     <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+   
+                        <th class="">
+                           <div class="flex items-center pl-5">
+                              <p class="text-base font-medium leading-none text-gray-700 mr-2">{{i.book}}</p>
+   
+                           </div>
+                        </th>
+   
+                        <td class="pl-5">
+                           <div class="flex items-center">
+   
+                              <p class="text-sm leading-none text-gray-600 ml-2">{{i.user}}</p>
+                           </div>
+                        </td>
+                        {% if i.renewalstatus == False %}
+                        <td class="pl-5">
+                           <div class="flex items-center">
+   
+                              <p class="text-sm leading-none text-gray-600 ml-2">Renewal in{{i.renewaldate}}</p>
+                           </div>
+                        </td>
+                        <td class="pl-4">
+                           <a href="{% url 'Renewbook' i.book.id %}">
+                           <button onclick=""
+                              class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Renew</button>
+                              </a>
+                        </td>
+                        {% else %}
+                        <td class="pl-5">
+                           <div class="flex items-center">
+   
+                              <p class="text-sm leading-none text-gray-600 ml-2">Renewed</p>
+                           </div>
+                        </td>
+
+                        {% endif %}
+
+                        <td class="pl-5">
+                           <div class="flex items-center">
+   
+                              <p class="text-sm leading-none text-gray-600 ml-2">Return in{{i.returndate}}</p>
+                           </div>
+                        </td>
+                        
+                        <td class="pl-4">
+                           <a href="{% url 'Returnbook' i.book.id %}">
+                           <button onclick=""
+                              class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Return</button>
+                              </a>
+                        </td>
+                        
+   
+                     </tr>
+                     {% endfor %}
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+
+
+      
+
+
+
+<div style="display: none;" id="Addbook" class="fixed pl-96   backdrop-grayscale backdrop-blur-sm h-full w-full flex text-center items-center justify-center">
+
+
+<div class="bg-white relative px-4 w-full max-w-2xl h-full ">
+   <div class=" font-extrabold text-3xl p-14">Add Book</div>
+   <div class="w-full flex justify-end pr-14">
+      <div class=" w-11  focus:outline-none   text-center text-lg  text-green-600 hover:text-purple-500 mt-4 md:mt-0">
+      <button onclick="Addbooks()"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" 
+               clip-rule="evenodd"></path></svg>
+      </button>
+      </div>
+   </div>
+
+   <form action="" method="post" >
+      {% csrf_token %}
+
+      <div class="pt-14" >
+         <input type="text" name="name" placeholder="Book Name"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+             required>
+      </div><br>
+      <div class="pt-1">
+         <input type="text" name="booknumber" placeholder="Book Number"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="text" name="author" placeholder="Author"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="date" name="pub_date" placeholder="pub_date"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="text" name="category" placeholder="category"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="text" name="description" placeholder="Description"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="file" name="image"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+      </div><br>
+      <input type="hidden" name="formname" value="addbook">
+      <div class="pt-1 pb-3  flex justify-center items-center text-center">
+         <button type="submit" value="submit" onclick=""  style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"
+            class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Register</button>
+      </div><br>
+
+   </form>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div style="display: none;" id="Getbook" class="fixed pl-96   backdrop-grayscale backdrop-blur-sm h-full w-full flex text-center items-center justify-center">
+<div class="bg-white relative px-4 w-full max-w-2xl h-full ">
+
+ <div class=" font-extrabold text-3xl p-14">Take Book</div>
+   <div class="w-full flex justify-end pr-14">
+      <div class=" w-11  focus:outline-none   text-center text-lg  text-green-600 hover:text-purple-500 mt-4 md:mt-0">
+      <button onclick="Takebook()"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" 
+               clip-rule="evenodd"></path></svg>
+      </button>
+      </div>
+   </div>
+
+   <form action="" method="post">
+      {% csrf_token %}
+      <div class="pt-14" >
+      <input type="text" name="username" placeholder="User Name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+   </div>
+      <div class="pt-2" >
+      <input type="text" name="booknumber" placeholder="Book Number" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+   </div>
+   
+      <input type="hidden" name="formname" value="broughtbook">
+      <div class="pt-4" >
+      <button type="'submit"  value="submit" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"
+      class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Take</button>
+      </div>
+   </form>
+
+   
+</div>
+</div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

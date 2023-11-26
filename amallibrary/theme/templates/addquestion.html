@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+<div class="w-screen flex justify-center  ">
+    <div class="lg:w-1/2 text-center">
+
+            <div class="font-extrabold text-3xl pt-11">
+                Add Question
+            </div>
+
+
+    <form action="Addquestion" method="post" >
+        {% csrf_token %}
+        {{ postques.media }}
+        <div class="pt-1">
+            {{ postques.question_department }} 
+        </div><br>
+        <div class="pt-1">
+            {{ postques.question_subject }} 
+        </div><br>
+        <div class="pt-7" >
+          {{ postques.question_ques }} 
+        <div class="pt-1">
+            {{ postques.question_answer }} 
+        </div><br>
+        
+        
+        <div class="pt-1 pb-3  flex justify-center items-center text-center">
+           <button type="submit" value="submit" onclick=""  style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"
+              class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Add</button>
+        </div><br>
+  
+     </form>
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

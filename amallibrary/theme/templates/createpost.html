@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- create a post creation form -->    
+    <form action="Createpost" method="post" class="">
+        {% csrf_token %}
+        <div class="flex justify-center">
+            <div class="grid md:grid-cols-2  md:grid-rows-6 gap-4 mt-14 mx-5 lg:mx-14 lg:gap-8 pt-7 px-16 ">
+                <div class="pt-5">
+                    <input type="text" name="title" required placeholder="Title" class=" w-full outline-none border-2 rounded-full text-center">
+                </div>
+                <div class="pt-5">
+                    <input type="text" name="body" required placeholder="Content" class=" w-full outline-none border-2 rounded-full text-center">
+                </div>
+                <div class="pt-5">
+                    <input type="text" name="pub_date" required placeholder="Date" class=" w-full outline-none border-2 rounded-full text-center">
+                </div>
+                <div class="pt-5">
+                    <input type="image" name="image" required placeholder="Image" class=" w-full outline-none border-2 rounded-full text-center">
+                </div>
+
+                <div class="pt-5">
+                    <input type="submit" value="Submit" class=" w-full outline-none border-2 rounded-full text-center">
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

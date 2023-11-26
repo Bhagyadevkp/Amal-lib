@@ -1,0 +1,77 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block body %}
+
+
+<div class="lg:ml-24 w-96" style="width: 850px;">
+
+
+    <div class="text-center pt-14">
+     <div class="rounded-full shadow-lg bg-gray-100" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">
+     <h1 class="font-bold text-center text-4xl py-4" >Department</h1>
+      </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="pt-7" >
+                <input type="text" name="Department" placeholder="Department"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+            </div>
+
+   
+            <div class="pt-4" >
+                <button type="'submit"  value="submit" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"
+                class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Add</button>
+            </div>
+        </form>
+    </div>   
+
+
+
+    <div class="text-center pt-14">
+     <div class="rounded-full shadow-lg bg-gray-100" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">
+     <h1 class="font-bold text-center text-4xl py-4">Post</h1>
+      </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="pt-7" >
+                <input type="text" name="Post" placeholder="Post"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+            </div>
+   
+            <div class="pt-4" >
+                <button type="'submit"  value="submit" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"
+                class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Add</button>
+            </div>
+        </form>
+    </div>   
+
+
+
+    <div class="text-center pt-14">
+     <div class="rounded-full shadow-lg  bg-gray-100" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">
+     <h1 class="font-bold text-center text-4xl py-4">Subject</h1>
+      </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="pt-7" >
+                <input type="text" name="Department" placeholder="Department"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+            </div>
+             <div class="pt-2" >
+                <input type="text" name="Subject" placeholder="Subject"
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+            </div>
+   
+            <div class="pt-4" >
+                <button type="'submit"  value="submit" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"
+                class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Add</button>
+            </div>
+        </form>
+    </div>   
+
+
+
+
+</div>
+
+{% endblock %}

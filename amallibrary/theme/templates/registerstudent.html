@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<form action="Studentregister" method="post" class="">
+    {% csrf_token %}
+    <div class="flex justify-center">
+    
+<div class="grid md:grid-cols-2  md:grid-rows-6 gap-4 mt-14 mx-5 lg:mx-14 lg:gap-8 pt-7 px-16 ">
+    <div class="pt-5">
+        
+        <input type="text" name="student_name" required placeholder="Name" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+    <!-- <div class="pt-5">
+        
+        <input type="text" name="student_username" required placeholder="Username" class=" w-full outline-none border-2 rounded-full text-center">
+    </div> -->
+
+    <div class="pt-5">
+        
+        <select  name="student_gender"  required placeholder="Gender" class=" w-full border-2  rounded-full text-center ">  
+            <option value="">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+
+    <div class="mt-5">
+        
+        <input type="date" name="student_dob" required placeholder="Date of Birth" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+    <div class="mt-5">
+        
+        <input type="email" name="student_email" required placeholder="Email" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+    <div class="pt-5">
+        
+        <input type="text" name="student_address" required placeholder="Address" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+    <div class="pt-5">
+        
+        <input type="password" name="student_password" required placeholder="Password" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+
+    <div class="pt-5">
+        
+        <input type="password" name="student_password1" required placeholder="Confirm Password" class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+    <div class="pt-5">
+        
+        <select  name="student_department"  required class=" w-full border-2  rounded-full text-center ">  
+            <option value="">Department</option>
+            {% for i in dept %}
+            <option value="{{i.department}}">{{i.department}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="pt-5">
+        
+        <select  name="student_course"  required class=" w-full border-2  rounded-full text-center ">  
+            <option value="">Course</option>
+            {% for i in curs %}
+            <option value="{{i.course}}">{{i.course}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- <div class="pt-5">
+        
+        <input type="text" name="department" required placeholder="Department Name" class=" w-full outline-none border-2 rounded-full text-center">
+    </div> -->
+    
+
+
+
+
+
+
+    <div class="pt-5">
+        
+        <input type="number" min="1900" max="3000" name="student_admissionyear" required placeholder="Year of Admisiion " class=" w-full outline-none border-2 rounded-full text-center">
+    </div>
+
+    <div class="pt-5">
+        
+        <input type="number" name="student_admissionnumber" required placeholder="Admission Number " class=" w-full outline-none border-2 rounded-full text-center">
+        
+    </div>
+    
+
+    <div class="pt-5">
+        
+        <input type="number" min="6000000000" max="9999999999" name="student_phone" required placeholder="Phone Number" class=" w-full outline-none border-2 rounded-full text-center">
+        
+    </div>
+
+</div>
+
+</div>
+<div class="pt-12 flex justify-center">
+    <p>Your Username will be your Admisiion Number</p>
+    <!-- <input type="number" name="student_phone" required placeholder="Phone Number" class=" outline-none border-2 rounded-full text-center"> -->
+</div> 
+
+
+<div class="pt-5 flex justify-center ">
+    <button type="submit" onsubmit="alert('Registration Complete')" class="items-center bg-gray-800 border-0 py-3 px-10 focus:outline-none hover:bg-green-600 rounded text-base text-white mt-4 md:mt-0">Register</button>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

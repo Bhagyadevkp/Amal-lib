@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+
+    <!-- <script type="text/javascript">
+        var divs = ["Section1", "Section2", "Section3", "Section4"];
+        var visibleId = null;
+        function show(id) {
+          if(visibleId !== id) {
+            visibleId = id;
+          } 
+          hide();
+        }
+        function hide() {
+          var div, i, id;
+          for(i = 0; i < divs.length; i++) {
+            id = divs[i];
+            div = document.getElementById(id);
+            if(visibleId === id) {
+              div.style.display = "block";
+            } else {
+              div.style.display = "none";
+            }
+          }
+        }  
+     </script> -->
+
+
+
+
+
+
+
+
+    <div class=' '>
+  
+        
+      
+
+
+
+
+
+
+
+
+         <div class="w-full  h-full bg-gray-100  ">
+         <div class="text-center  ">
+            <h4 class=" text-3xl font-extrabold pt-7 pb-6">Books</h4>
+             <div class="w-full lg:mt-5 ">
+                 <!-- <div class="col-span-4 w-full ml-14 md:ml-32 lg:ml-4 lg:pr-4">
+                     
+                     <div class="w-full  mt-5">
+                        
+                         <div class=" shadow-lg p-3 bg-white rounded">
+                             <button class="bg-transparent" onclick="show('Section1');" style="width: 100%;border: none;border-radius: 15px;">BOOKS</button>
+                         </div>
+                         
+                     </div>
+                      <div class="w-full mt-5">
+                        
+                         <div class=" shadow-lg p-3 bg-white rounded">
+                             <button class="bg-transparent" onclick="show('Section2');" style="width: 100%;border: none;border-radius: 15px;">MAGAZINES</button>
+                         </div>
+                         
+                        </div>
+
+                         </div> -->
+
+                         
+                        
+
+                        <div class=" mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
+                            <div class="mt-5  p-3 mb-5  grid lg:grid-cols-12 gap-2"  id="demo"> 
+                                {% for i in book %}
+                                <div class="w-24 h-36 border-2 flex items-center  mb-4  justify-center ">
+                                <img class="w-24 h-36" src="{% static '/img/amallib.jpg' %}"/>
+                                <h1 class="absolute text-white font-semibold ">{{i.name}}</h1>
+                                <h1 class="absolute text-white font-semibold mt-7">{{i.author}}</h1>
+                                <h1 class="absolute text-white font-semibold pt-14">{{i.booknumber}}</h1>
+                                
+                                </div>
+                                {% endfor %}
+                                <div class="w-24 h-36 border-2 border-black  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-24 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                             
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    
+             </div>
+            
+
+
+
+
+             
+         </div>
+
+
+
+
+         
+     
+
+
+
+
+         {% for i in book %}
+
+
+
+         <p>{{i.name}}</p>
+         <p>{{i.auther}}</p>
+         <p>{{i.pub_date}}</p>
+         <p>{{i.category}}</p>
+         <p>{{i.description}}</p>
+         <p>{{i.booknumber}}</p>
+         <img src="{{i.image}}" alt="">
+         
+         
+         {% if i.id in var %}
+             <p>Book Not Available</p>
+         {% else %}
+             <p>is Available</p>
+         {% endif %}
+         
+     
+     
+     {% endfor %}
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+    
+		{% endblock %}

@@ -1,0 +1,97 @@
+<div class="main h-auto overflow-y-auto sticky">
+    <div class="  lg:grid lg:grid-cols-2 lg:gap-2">
+       <div class=" font-extrabold text-center text-3xl pt-11 pb-7 col-span-2">Book List</div>
+     <div class="h-screen ">
+      <div class=" pt-2  text-center overflow-y-auto  flex items-center justify-center">
+       <table  style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;" class="border-separate w-fit ">
+             <tr>
+                <th class=" md:px-14 lg:px-24 md:py-4" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">Name</th>
+                <th  class=" md:px-14 lg:px-24 md:py-4" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">Book Number</th>
+                <th  class="md:px-14 lg:px-24 md:py-4" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">Availability</th>
+             </tr>
+             <div class="overflow-scroll">
+             {% for i in book %}
+             <tr>
+                <td class="md:px-14 lg:px-24 md:py-3" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">{{i.name}}</td>
+                <td  class="md:px-14 lg:px-24 md:py-3" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">{{i.booknumber}}</td>
+                <td  class="md:px-14 lg:px-24 md:py-3" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;">
+                   {% if i.id in var %}
+                      <p>Book Not Available</p>
+                   {% else %}
+                      <p>is Available</p>
+                   {% endif %}
+                   
+                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" 
+                    stroke-width="2" d="M5 13l4 4L19 7"></path></svg></td>
+             </tr>
+             {% endfor %}
+          </div>
+            
+          </table>
+      
+      
+      </div>
+    
+     </div>
+    
+    <div class="px-11">
+     <form action="" method="post">
+    {% csrf_token %}
+    
+    <div class="pt-1">
+    <input type="text" name="name" placeholder="Book Name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+    </div><br>
+    <div class="pt-1">
+    <input type="text" name="booknumber" placeholder="Book Number" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+    </div><br>
+    <div class="pt-1">
+    <input type="text" name="author" placeholder="Author" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+    </div><br>
+    <div class="pt-1">
+    <input type="date" name="pub_date" placeholder="pub_date" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+    </div><br>
+    <div class="pt-1">
+    <input type="text" name="category" placeholder="category" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+    </div><br>
+    <div class="pt-1">
+    <input type="text" name="description" placeholder="price" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+    </div><br>
+    <div class="pt-1">
+    <input type="file" name="image"  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-7/12 py-2 px-4  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+    </div><br>
+    <input type="hidden" name="formname" value="addbook">
+    <div class="pt-1 pb-3 w-7/12 flex justify-center items-center">
+    <button type="submit" value="submit" onclick="" class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Register</button>
+    </div><br>
+    
+    </form>
+    
+    
+    
+    </div>
+    
+    
+    
+    <div>
+    
+    
+    
+    
+    
+    <form action="" method="post">
+    
+       <input type="text" name="username" placeholder="User Name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+       <input type="text" name="booknumber" placeholder="Book Number" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" required>
+       <input type="hidden" name="formname" value="broughtbook">
+       <input type="'submit'" name="submit" value="submit" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+       
+       </form> 
+    
+    </div>
+    
+    
+    
+    
+    </div>
+    </div>

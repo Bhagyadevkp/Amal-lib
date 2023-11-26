@@ -1,0 +1,215 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block body %}
+
+
+
+<script>
+  // make a function popuphandler to handle the popup
+  function Addposts (){
+     console.log("popuphandler");
+     var model = document.getElementById("Addpost");
+     if (model.style.display == "none") {
+        model.style.display = "block";
+     } else {
+        model.style.display = "none";
+     }
+  
+  }
+  </script>
+
+
+
+
+    <main class="flex-col  w-auto pb-36 lg:ml-24   ">
+      <div class="flex justify-between  p-4 bg-white mt-3 rounded-xl shadow-lg ">
+        <h1 class="text-xl   font-bold text-gray-700">Welcome to Amal Library</h1>
+      </div>
+      <div class="grid lg:grid-cols-2">
+       
+          
+     <div class="px-4 md:px-10 py-4 md:py-7 col-span-2 ">
+                   <div class="flex items-center justify-between ">
+                       <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Blog</p>
+                   </div>
+               </div>
+        
+               <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10 ">
+                   <div class="sm:flex items-center justify-between">
+                       <div class="flex items-center">
+                           <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800" href=" javascript:void(0)">
+                               <div class="py-2 px-8 bg-indigo-100 text-indigo-700 rounded-full">
+                                   <p>Posts</p>
+                               </div>
+                           </a>
+                       </div>
+                       <button onclick="Addposts()" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                           <p class="text-sm font-medium leading-none text-white">Add Post</p>
+                       </button>
+                   </div>
+                   <div class="mt-7 overflow-x-auto overflow-y-auto">
+                       <table class="w-full whitespace-nowrap">
+                           <tbody>
+                              {% for i in posts %}
+                               <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+                                   
+                                   <th class="">
+                                       <div class="flex items-center pl-5">
+                                           <p class="text-base font-medium leading-none text-gray-700 mr-2">{{i.title|slice:":20"}}</p>
+                                           
+                                       </div>
+                                   </th>
+                                   
+                                   <td class="pl-5">
+                                       <div class="flex items-center">
+                                           
+                                           <p class="text-sm leading-none text-gray-600 ml-2">{{i.pub_date}}</p>
+                                       </div>
+                                   </td>
+
+                     
+                                <td class="pl-4">
+                                 <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-red-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Edit</button>
+                             </td>
+                                   <td class="pl-4">
+                                    <a href="{% url 'Deleteblog' i.id %}">
+                                       <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Delete</button></a>
+                                   </td>
+                                   
+                               </tr>
+                               {% endfor %}
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+           </div>
+
+        <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+            <div class="sm:flex items-center justify-between">
+                <div class="flex items-center">
+                    <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800" href=" javascript:void(0)">
+                        <div class="py-2 px-8 bg-indigo-100 text-indigo-700 rounded-full">
+                            <p>Comments</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-7 overflow-x-auto">
+                <table class="w-full whitespace-nowrap">
+                    <tbody>
+                       {% for i in cmnt %}
+                        <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+                            
+                            <th class="">
+                                <div class="flex items-center pl-5">
+                                    <p class="text-base font-medium leading-none text-gray-700 mr-2">{{i.post|slice:":20"}}</p>
+                                    
+                                </div>
+                            </th>
+                            
+                            <td class="pl-5">
+                                <div class="flex items-center">
+                                    
+                                    <p class="text-sm leading-none text-gray-600 ml-2">{{i.comment|slice:":20"}}</p>
+                                </div>
+                            </td>
+                            <td class="pl-4">
+                             <a href="{% url 'Deletecomment' i.id %}">
+                                <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Delete</button></a>
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+            
+          
+      </div>
+   </main>
+   
+
+
+   <div style="display: none;" id="Addpost" class=" backdrop-grayscale backdrop-blur-sm h-full w-full flex text-center items-center justify-center">
+
+   <div  class=" rounded-xl mt-4 p-4 bg-white shadow-lg">
+    <h1 class=" text-3xl font-extrabold text-gray-800 mt-4">Post a Blog</h1>
+
+   <div class="w-full flex justify-end pr-14">
+      <div class=" w-11  focus:outline-none   text-center text-lg  text-green-600 hover:text-purple-500 mt-4 md:mt-0">
+      <button onclick="Addposts()"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" 
+               clip-rule="evenodd"></path></svg>
+      </button>
+      </div>
+   </div>
+
+
+
+    <div class="  flex justify-center  lg:text-center mt-6 ">
+
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {{ postblog.media }}
+      <div class=" justify-center ">
+        <div class=" text-center mt-4 ">{{ postblog.title }}</div>
+        <div class="lg:ml-14 mt-5">{{ postblog.body }}</div>
+        <div class=" text-center ox-4 mt-4">{{postblog.image}}</div>
+        
+      </div>
+     <div class="pt-4" >
+      <button type="'submit"  value="submit" style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"
+      class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Post</button>
+      </div>
+    
+    </form>
+    
+  
+  </div>
+
+  
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    

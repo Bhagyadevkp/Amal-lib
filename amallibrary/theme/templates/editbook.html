@@ -1,0 +1,67 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block body %}
+
+
+
+
+
+
+
+<div class="lg:pl-96    flex text-center items-center justify-center">
+
+<div class="bg-white relative px-4 w-full max-w-2xl h-full ">
+
+   <form action="Editbook" method="post" >
+      {% csrf_token %}
+   
+      <div class="pt-36" >
+         <input type="text" name="name" placeholder="{{book.name}}"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+             required>
+      </div><br>
+      <div class="pt-1">
+         <input type="text" name="booknumber" placeholder="{{book.booknumber}}"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="text" name="author" placeholder="{{book.author}}"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="date" name="pub_date" placeholder="{{book.pub_date}}"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="text" name="category" placeholder="{{book.category}}"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="text" name="description" placeholder="{{book.description}}"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-center text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            required>
+      </div><br>
+      <div class="pt-1">
+         <input type="file" name="image"  
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+      </div><br>
+      <div class="pt-1 pb-3  flex justify-center items-center text-center">
+         <button type="submit" value="submit" onclick=""  style="box-shadow: -3px -3px 7px hsl(0, 0%, 100%), 3px 3px 7px #00000070;"
+            class="items-center bg-gray-800 border-0 py-2 px-10 focus:outline-none hover:bg-green-600 rounded text-center text-base text-white mt-4 md:mt-0">Register</button>
+      </div><br>
+
+   </form>
+
+
+</div>
+
+</div>
+
+
+
+
+{% endblock %}

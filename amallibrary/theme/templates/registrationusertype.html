@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="justify-center bg-gray-200 pb-96 ">
+        
+                <div class=' pt-14 flex text-center justify-center '>
+                    <h1 class='font-Roboto, sans-serif font-bold text-4xl'>Library User Registration</h1>
+                </div>
+            <div class="lg:mx-96 lg:px-60 md:mx-52 mx-10 pt-10">
+                <div class="">
+                <a href="{% url 'Studentregister' %}" class=" bg-white flex justify-center font-bold rounded-full md:rounded-full h-24 pt-9">Students</a>
+                </div>
+                <div class="pt-5">
+                <a href="{% url 'Staffregister' %}" class="bg-white flex justify-center font-bold rounded-full md:rounded-full h-24 pt-9 ">Teachers</a>
+                </div> 
+                <!-- <div class="pt-5">
+                <a href="" class="bg-white flex justify-center font-bold rounded-full md:rounded-full h-24 pt-9">NonTeaching staffs</a>
+                </div> -->
+            </div>
+            
+</div>
+ {% endblock %}
+
+
+
+
+
+

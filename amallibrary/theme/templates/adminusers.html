@@ -1,0 +1,326 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block body %}
+
+
+<div class="grid lg:grid-cols-2 overflow-y-auto  ">
+  <div class="sm:px-6 w-full  justify-center max-w-2xl">
+        <div class="px-4 md:px-10 py-4 md:py-7">
+           <div class="flex items-center justify-between">
+              <p tabindex="0"
+                 class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">
+                 Users</p>
+           </div>
+        </div>
+        <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+           <div class="sm:flex items-center justify-between">
+              <div class="flex items-center">
+                 <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800">
+                    <div class="py-2 px-8 text-gray-600 hover:text-indigo-700 bg-indigo-100 rounded-full">
+                       <p>Students</p>
+                    </div>
+                 </a>
+              </div>
+              <!-- <button onclick="Addbooks()"
+                 class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                 <p class="text-sm font-medium leading-none text-white">Add Book</p>
+              </button> -->
+           </div>
+           <div class="mt-7 overflow-x-auto">
+              <table class="w-full whitespace-nowrap">
+                 <tbody>
+                    {% for i in stud %}
+                    {% if i.student_username.is_active %}
+                    <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+  
+                       <th class="">
+                          <div class="flex items-center pl-5">
+                             <p class="text-base font-medium leading-none text-gray-700 mr-2">{{i.student_username}}</p>
+  
+                          </div>
+                       </th>
+  
+                       <td class="pl-5">
+                          <div class="flex items-center">
+  
+                             <p class="text-sm leading-none text-gray-600 ml-2">{{i.student_name}}</p>
+                          </div>
+                       </td>
+                       <td class="pl-5">
+                        <div class="flex items-center">
+
+                           <p class="text-sm leading-none text-gray-600 ml-2">{{i.student_department}}</p>
+                        </div>
+                     </td>
+                       <td class="pl-5">
+                          
+                          <div class="flex items-center">
+
+                             <p class="text-sm leading-none text-green-500 ml-2 hidden md:block lg:block">Active</p>
+                          </div>
+                          
+                       </td>
+                       <td class="pl-4">
+                        <a href="{% url 'Deletestudent' i.student_username.id %}">
+                          <button
+                             class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Delete</button></a>
+                       </td>
+  
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                 </tbody>
+              </table>
+           </div>
+        </div>
+  </div>
+
+
+
+
+    <div class="sm:px-6 w-full  justify-center max-w-2xl">
+        <div class="px-4 md:px-10 py-4 md:py-11">
+            <div class="flex items-center justify-between">
+               <p tabindex="0"
+                  class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">
+                  </p>
+            </div>
+         </div>
+          
+          <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+             <div class="sm:flex items-center justify-between">
+                <div class="flex items-center">
+                   <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800">
+                      <div class="py-2 px-8 text-gray-600 hover:text-indigo-700 bg-indigo-100 rounded-full">
+                         <p>Staffs</p>
+                      </div>
+                   </a>
+                </div>
+                <!-- <button onclick="Addbooks()"
+                   class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                   <p class="text-sm font-medium leading-none text-white">Add Book</p>
+                </button> -->
+             </div>
+             <div class="mt-7 overflow-x-auto">
+                <table class="w-full whitespace-nowrap">
+                   <tbody>
+                      {% for i in staf %}
+                      <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+    
+                         <th class="">
+                            <div class="flex items-center pl-5">
+                               <p class="text-base font-medium leading-none text-gray-700 mr-2">{{i.staff_username}}</p>
+    
+                            </div>
+                         </th>
+    
+                         <td class="pl-5">
+                            <div class="flex items-center">
+    
+                               <p class="text-sm leading-none text-gray-600 ml-2">{{i.staff_name}}</p>
+                            </div>
+                         </td>
+                         <td class="pl-5">
+                          <div class="flex items-center">
+  
+                             <p class="text-sm leading-none text-gray-600 ml-2">{{i.staff_department}}</p>
+                          </div>
+                       </td>
+                         <td class="pl-5">
+                            {% if i.staff_username.is_active %}
+                            <div class="flex items-center">
+  
+                               <p class="text-sm leading-none text-green-500 ml-2 hidden md:block lg:block">Active</p>
+                            </div>
+                        
+                            {% endif %}
+                         </td>
+                         <td class="pl-4">
+                            
+                              <a href="{% url 'Deletestaff' i.staff_username.id %}">
+                            <button
+                               class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Remove</button></a>
+                         </td>
+    
+                      </tr>
+                      {% endfor %}
+                   </tbody>
+                </table>
+             </div>
+          </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="grid lg:grid-cols-2 overflow-y-auto  ">
+      <div class="sm:px-6 w-full  justify-center max-w-2xl">
+            <div class="px-4 md:px-10 py-4 md:py-7">
+               <div class="flex items-center justify-between">
+                  <p tabindex="0"
+                     class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">
+                     ACTIVATE USERS</p>
+               </div>
+            </div>
+            <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+               <div class="sm:flex items-center justify-between">
+                  <div class="flex items-center">
+                     <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800">
+                        <div class="py-2 px-8 text-gray-600 hover:text-indigo-700 bg-indigo-100 rounded-full">
+                           <p>Students</p>
+                        </div>
+                     </a>
+                  </div>
+                  <!-- <button onclick="Addbooks()"
+                     class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                     <p class="text-sm font-medium leading-none text-white">Add Book</p>
+                  </button> -->
+               </div>
+               <div class="mt-7 overflow-x-auto">
+                  <table class="w-full whitespace-nowrap">
+                     <tbody>
+                        {% for i in stud %}
+                        {% if i.student_username.is_active %}
+                              {% else %}
+                        <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+      
+                           <th class="">
+                              <div class="flex items-center pl-5">
+                                 <p class="text-base font-medium leading-none text-gray-700 mr-2">{{i.student_username}}</p>
+      
+                              </div>
+                           </th>
+      
+                           <td class="pl-5">
+                              <div class="flex items-center">
+      
+                                 <p class="text-sm leading-none text-gray-600 ml-2">{{i.student_name}}</p>
+                              </div>
+                           </td>
+                           <td class="pl-5">
+                            <div class="flex items-center">
+    
+                               <p class="text-sm leading-none text-gray-600 ml-2">{{i.student_department}}</p>
+                            </div>
+                         </td>
+                           <td class="pl-5">
+                              
+                              <div class="flex items-center ">
+        
+                                 <p class="text-sm leading-none text-red-500 ml-2 hidden md:block lg:block">Activate</p>
+                              </div>
+                              
+                           </td>
+                           <td class="pl-4">
+                              <a href="">
+                              <button
+                                 class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Delete</button></a>
+                           </td>
+      
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+      </div>
+    
+    
+    
+    
+        <div class="sm:px-6 w-full  justify-center max-w-2xl">
+            <div class="px-4 md:px-10 py-4 md:py-11">
+                <div class="flex items-center justify-between">
+                   <p tabindex="0"
+                      class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">
+                      </p>
+                </div>
+             </div>
+              
+              <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+                 <div class="sm:flex items-center justify-between">
+                    <div class="flex items-center">
+                       <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800">
+                          <div class="py-2 px-8 text-gray-600 hover:text-indigo-700 bg-indigo-100 rounded-full">
+                             <p>Staffs</p>
+                          </div>
+                       </a>
+                    </div>
+                    <!-- <button onclick="Addbooks()"
+                       class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                       <p class="text-sm font-medium leading-none text-white">Add Book</p>
+                    </button> -->
+                 </div>
+                 <div class="mt-7 overflow-x-auto">
+                    <table class="w-full whitespace-nowrap">
+                       <tbody>
+                          {% for i in staf %}
+                          {% if i.staff_username.is_active %}
+                          {% else %}
+ 
+                          <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+        
+                             <th class="">
+                                <div class="flex items-center pl-5">
+                                   <p class="text-base font-medium leading-none text-gray-700 mr-2">{{i.staff_username}}</p>
+        
+                                </div>
+                             </th>
+        
+                             <td class="pl-5">
+                                <div class="flex items-center">
+        
+                                   <p class="text-sm leading-none text-gray-600 ml-2">{{i.staff_name}}</p>
+                                </div>
+                             </td>
+                             <td class="pl-5">
+                              <div class="flex items-center">
+      
+                                 <p class="text-sm leading-none text-gray-600 ml-2">{{i.staff_department}}</p>
+                              </div>
+                           </td>
+                             <td class="pl-5">
+                                
+        
+                                
+                                <div class="flex items-center ">
+          
+                                   <p class="text-sm leading-none text-red-500 ml-2 hidden md:block lg:block">Activate</p>
+                                </div>
+                                
+                             </td>
+                             <td class="pl-4">
+                                <a href="">
+                                <button
+                                   class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Delete</button></a>
+                             </td>
+        
+                          </tr>
+                          {% endif %}
+                          {% endfor %}
+                       </tbody>
+                    </table>
+                 </div>
+              </div>
+        </div>
+    
+
+
+
+
+
+
+{% endblock %}
